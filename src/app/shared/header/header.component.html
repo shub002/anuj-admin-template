@@ -1,0 +1,22 @@
+<header class="header">
+    <div class="header-left">
+      <button pButton pRipple icon="pi pi-bars" 
+              class="p-button-text p-button-rounded menu-btn"
+              (click)="onToggleSidebar()"
+              pTooltip="Menu">
+      </button>
+      <h1 class="app-title">My Application</h1>    
+    </div>
+  
+    <div class="header-right">
+      <h4 class="username">Anuj</h4>
+      <button pButton pRipple icon="pi pi-user" 
+              class="p-button-text p-button-rounded user-btn"
+              (click)="openLogoutDialog()"
+              pTooltip="Logout">
+      </button>    
+    </div>
+  
+    <p-confirmDialog></p-confirmDialog>
+  </header>
+  

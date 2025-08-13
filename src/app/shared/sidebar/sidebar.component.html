@@ -1,0 +1,30 @@
+<nav class="sidebar" [class.collapsed]="collapsed">
+  <ul>
+    <!-- Dashboard -->
+    <li routerLink="/dashboard" routerLinkActive="active">
+      <i class="pi pi-user"></i>
+      <span *ngIf="!collapsed">Dashboard</span>
+    </li>
+
+    <!-- Profile with submenu -->
+    <li (click)="toggleSubmenu('profile')" [class.open]="activeSubmenu === 'profile'">
+      <i class="pi pi-id-card"></i>
+      <span *ngIf="!collapsed">Profile</span>
+      <i class="pi pi-angle-right submenu-toggle" *ngIf="!collapsed"></i>
+    </li>
+    <ul class="submenu" [class.open]="activeSubmenu === 'profile'">
+      <li routerLink="/profile/profile1" routerLinkActive="active">
+        Profile 1
+      </li>
+      <li routerLink="/profile/profile2" routerLinkActive="active">
+        Profile 2
+      </li>
+    </ul>
+
+    <!-- Settings -->
+    <li routerLink="/settings" routerLinkActive="active">
+      <i class="pi pi-cog"></i>
+      <span *ngIf="!collapsed">Settings</span>
+    </li>
+  </ul>
+</nav>

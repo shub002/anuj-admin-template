@@ -1,0 +1,114 @@
+.sidebar {
+    width: 240px;
+    background-color: #f8fafc;
+    padding-top: 16px;
+    transition: width 0.3s ease;
+    height: calc(100% - 64px); /* Adjust height based on header height */
+    overflow-y: auto;
+  
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  
+      li {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        color: #334155;
+        position: relative;
+  
+        i.pi {
+          margin-right: 12px;
+          color: #475569;
+          font-size: 1.5rem;
+          min-width: 24px;
+          text-align: center;
+        }
+  
+        &:hover {
+          background-color: #e2e8f0;
+        }
+  
+        &.active {
+          background-color: #1e293b;
+          color: white;
+  
+          i.pi {
+            color: white;
+          }
+        }
+  
+        /* Chevron icon position */
+        .submenu-toggle {
+          margin-left: auto;
+          font-size: 1rem;
+          transition: transform 0.3s ease;
+        }
+        &.open .submenu-toggle {
+          transform: rotate(90deg);
+        }
+      }
+  
+      /* Submenu styles */
+      .submenu {
+        list-style: none;
+        padding-left: 48px;
+        margin: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+  
+        li {
+          padding: 8px 0;
+          font-size: 0.9rem;
+          color: #475569;
+  
+          &:hover {
+            background-color: #e2e8f0;
+          }
+  
+          &.active {
+            background-color: #1e293b;
+            color: white;
+          }
+        }
+      }
+  
+      /* When submenu is open */
+      .submenu.open {
+        max-height: 200px; /* Adjust if more items */
+        opacity: 1;
+      }
+    }
+  
+    /* Collapsed mode */
+    &.collapsed {
+      width: 67px;
+  
+      ul li {
+        justify-content: center;
+        padding: 12px;
+  
+        i.pi {
+          margin-right: 0;
+          flex-shrink: 0;
+          font-size: 1.5rem;
+          display: inline-block;
+        }
+  
+        span {
+          display: none;
+        }
+      }
+  
+      /* Hide submenu in collapsed mode */
+      .submenu {
+        display: none !important;
+      }
+    }
+  }
+  

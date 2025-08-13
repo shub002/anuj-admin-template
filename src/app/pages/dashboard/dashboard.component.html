@@ -1,0 +1,84 @@
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+
+<!-- Top Bar -->
+<div class="dashboard-header">
+  <h2><i class="pi pi-users mr-2"></i>User Management</h2>
+</div>
+
+<!-- Glass Card Table -->
+<div class="glass-card">
+  <p-table
+    [value]="users"
+    [paginator]="true"
+    [rows]="5"
+    [responsiveLayout]="'scroll'"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    styleClass="p-datatable-gridlines custom-table"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th class="text-center" style="width: 150px;">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <span class="role-badge" [ngClass]="user.role.toLowerCase()">{{ user.role }}</span>
+        </td>
+        <td class="text-center">
+          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-info mr-2" (click)="editUser(user)"></button>
+          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteUser(user)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<!-- Floating Add Button -->
+<button
+  pButton
+  pRipple
+  icon="pi pi-plus"
+  class="p-button-rounded p-button-success fab"
+  (click)="openNew()"
+></button>
+
+<!-- Add/Edit Dialog -->
+<p-dialog
+  [(visible)]="userDialog"
+  [modal]="true"
+  [style]="{ width: '420px' }"
+  [header]="isEditMode ? 'Edit User' : 'Add User'"
+  [closable]="false"
+  [dismissableMask]="true"
+  [contentStyle]="{ 'padding': '1.5rem' }"
+  [transitionOptions]="'300ms ease'"
+>
+  <div class="form-grid">
+    <div class="input-wrapper">
+      <i class="pi pi-user"></i>
+      <input pInputText placeholder="Full Name" [(ngModel)]="user.name" required />
+    </div>
+    <div class="input-wrapper">
+      <i class="pi pi-envelope"></i>
+      <input pInputText placeholder="Email" [(ngModel)]="user.email" required />
+    </div>
+    <div class="input-wrapper">
+      <i class="pi pi-id-card"></i>
+      <input pInputText placeholder="Role" [(ngModel)]="user.role" required />
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button pButton label="Cancel" icon="pi pi-times" class="p-button-text" (click)="userDialog=false"></button>
+    <button pButton label="Save" icon="pi pi-check" class="p-button-success" (click)="saveUser()"></button>
+  </ng-template>
+</p-dialog>

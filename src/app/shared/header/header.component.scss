@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    justify-content: space-between; /* Pushes left and right sections apart */
+    align-items: center;
+    padding: 0 16px;
+    height: 64px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  
+    .header-left {
+      display: flex;
+      align-items: center;
+  
+      .app-title {
+        margin-left: 12px;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+    }
+  
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto; /* Forces it to stay at the far right */
+  
+      .username {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+  
+      .user-btn {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  

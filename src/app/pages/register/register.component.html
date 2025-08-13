@@ -1,0 +1,54 @@
+<div class="register-container">
+    <p-card class="register-card">
+      <div class="register-header">
+        <h2>Create Account</h2>
+        <p>Fill in your details to sign up</p>
+      </div>
+  
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+  
+        <div class="form-field">
+          <label for="fullName">Full Name</label>
+          <input pInputText id="fullName" formControlName="fullName" placeholder="John Doe" />
+        </div>
+  
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input pInputText id="email" formControlName="email" placeholder="example@mail.com" />
+        </div>
+  
+        <div class="form-field">
+          <label for="username">Username</label>
+          <input pInputText id="username" formControlName="username" placeholder="Choose a username" />
+        </div>
+  
+        <div class="form-field">
+          <label for="password">Password</label>
+          <p-password 
+            id="password" 
+            formControlName="password" 
+            [feedback]="true" 
+            [toggleMask]="true"
+            placeholder="Enter password">
+          </p-password>
+        </div>
+  
+        <div class="form-field">
+          <label for="confirmPassword">Confirm Password</label>
+          <p-password 
+            id="confirmPassword" 
+            formControlName="confirmPassword" 
+            [feedback]="false" 
+            [toggleMask]="true"
+            placeholder="Re-enter password">
+          </p-password>
+        </div>
+  
+        <p-message *ngIf="errorMessage" severity="error" text="{{ errorMessage }}"></p-message>
+  
+        <button pButton type="submit" label="Register" class="full-btn"></button>
+        <button pButton type="button" label="Back to Login" class="p-button-text full-btn" (click)="goToLogin()"></button>
+      </form>
+    </p-card>
+  </div>
+  
